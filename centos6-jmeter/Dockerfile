@@ -1,4 +1,4 @@
-FROM sergeyzh/centos6-java
+FROM sergeyzh/centos6-java:jdk8
 
 MAINTAINER Dominic McGinnis, dominic_mcginnis@yahoo.com
 
