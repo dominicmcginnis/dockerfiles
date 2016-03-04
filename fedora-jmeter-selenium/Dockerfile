@@ -15,6 +15,7 @@ RUN dnf install -y libexif-gtk2.x86_64
 # Install chrome driver
 RUN	curl -L --silent http://chromedriver.storage.googleapis.com/2.21/chromedriver_linux64.zip -o /tmp/chromedriver_linux64.zip && \
 	unzip -o -d /opt/google/chrome /tmp/chromedriver_linux64.zip && \
+	chmod +x /opt/google/chrome/chromedriver && \
 	rm /tmp/chromedriver_linux64.zip
 
 # Add JMeter Webdriver
