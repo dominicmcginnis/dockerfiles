@@ -18,6 +18,10 @@ RUN	curl -L --silent http://chromedriver.storage.googleapis.com/2.21/chromedrive
 	chmod +x /opt/google/chrome/chromedriver && \
 	rm /tmp/chromedriver_linux64.zip
 
+# Address PKI issue if running with another user - etc. jenkins
+RUN chmod -R 777 /root && \
+	chmod -R 777 ~
+
 # Add JMeter Webdriver
 RUN		curl -L --silent http://jmeter-plugins.org/downloads/file/JMeterPlugins-WebDriver-1.3.1.zip -o /tmp/jmeter-plugins-WebDriver.zip && \
 		unzip -o -d /opt/jmeter/ /tmp/jmeter-plugins-WebDriver.zip && \
