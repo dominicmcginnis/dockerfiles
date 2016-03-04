@@ -35,6 +35,9 @@ RUN export DISPLAY=:99.0
 
 WORKDIR ~
 
+# Reset root user password
+RUN echo 'root:bobafett' | chpasswd
+
 # CMD to run the virtual screen
 CMD Xvfb :99 -screen 0 1024x768x16 &> xvfb.log &
 
