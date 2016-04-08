@@ -11,7 +11,7 @@ RUN dnf install -y tar bzip2 gcc-c++
 ADD .npmrc /root/.npmrc
 
 # Add EMS CLI
-RUN npm install -g @elliemae/em-swift-cli@3.0.4 ; exit 0;
+RUN npm install -g @elliemae/em-swift-cli@3.0.6 ; exit 0;
 RUN npm install -g tsd ; exit 0;
 
 # Reset root user password
