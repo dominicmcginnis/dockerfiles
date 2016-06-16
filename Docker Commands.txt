@@ -1,0 +1,48 @@
+Docker Commands
+
+// Run and attach to a docker container in privileged mode
+docker run -it --privileged gui-jmeter /bin/bash
+
+// Run a docker container in the background
+docker run -d -P tpo
+
+// Review exposed ports on a docker container
+docker port <container_id>
+
+// Find docker containers (running or not)
+docker ps -a
+
+// Build a docker image
+docker build -t <name> --file <docker file> <docker context dir>
+
+// Attach to a docker container
+docker exec -t <container_id> /bin/bash
+
+// Run a virtual screen
+Xvfb :99 -screen 0 1024x768x16 &> xvfb.log &
+
+
+Add GCC to docker build
+
+Add post jenkins step read test results
+If pass, add post step to commit dist directory back into git for deployment
+
+//clean up dangling images
+docker images -f dangling=true -q | xargs docker rmi
+
+//clean up images < 1 day old
+docker images --no-trunc --format '{{.ID}} {{.CreatedSince}}' | grep ' days' | awk '{ print $1 }' | xargs --no-run-if-empty docker rmi
+
+// remove old containers
+docker ps -as --no-trunc --format '{{.ID}} {{.RunningFor}}' | grep ' days' | awk '{ print $1 }' | xargs --no-run-if-empty docker rm
+
+// Shrinking a docker image
+docker export container_id_of_image_to_shrink | docker import - new_image_name
+
+
+
+//remove all containers
+docker ps -as --no-trunc --format '{{.ID}}' | xargs --no-run-if-empty docker rm
+
+//remove all images
+docker images --no-trunc --format '{{.ID}}' | xargs --no-run-if-empty docker rmi
